@@ -1,0 +1,75 @@
+* { box-sizing: content-box; }
+html, body {
+  margin: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.floresta img {
+  width: 100%;
+  position: absolute;
+  bottom: 0; left: 0;
+}
+/* Başlık veya avatar eklemek isterseniz .title sınıfını kullanabilirsiniz */
+/* Particles.js elementi */
+#particles-js {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;            /* .noite arkaplanının üstünde, .constelacao’nın altında */
+  pointer-events: none;   /* Üzerine tıklamayı engelle */
+}
+
+.noite {
+  z-index: 0;             /* Gökyüzü arkaplanı */
+}
+.constelacao {
+  position: relative;
+  z-index: 2;             /* CSS yıldızlarının üstünde göster */
+}
+
+/* Mesaj balonu */
+.message-star {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(10, 10, 30, 0.8); /* koyu gece mavisi */
+  color: #fff;                      /* beyaz metin */
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(255,255,255,0.2),
+              0 0 20px rgba(154, 14, 219, 0.4); /* hafif altın ışıltı */
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(1);
+  animation: floatAndFade 4s ease-in-out forwards;
+}
+
+/* Balonun başındaki yıldız ikonu */
+.message-star::before {
+  content: "★";
+  margin-right: 6px;
+  font-size: 18px;
+  color: gold;
+  text-shadow: 0 0 4px purple;
+}
+
+/* Yeni kaybolma animasyonu */
+@keyframes floatAndFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -60%) scale(1.1) rotate(5deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150%) scale(0.5) rotate(-10deg);
+  }
+}
